@@ -10,7 +10,7 @@ namespace MongooseCpp {
 class PageController : public IWebController
 {
     public:
-        PageController(const std::string& documentRoot, bool enableDirectoryListing);
+		PageController(const std::string& documentRoot = ".", bool enableDirectoryListing = true);
         virtual ~PageController();
         bool Process(Request& request, Response& response);
 

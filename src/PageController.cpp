@@ -3,7 +3,9 @@
 using namespace std;
 namespace MongooseCpp {
 
-PageController::PageController(const string& documentRoot, bool enableDirectoryListing) : m_DocumentRoot(documentRoot), m_EnableDirectoryListing(enableDirectoryListing)
+PageController::PageController(const std::string& documentRoot/* = "."*/, bool enableDirectoryListing/* = true*/)
+	: m_DocumentRoot(documentRoot)
+	, m_EnableDirectoryListing(enableDirectoryListing)
 {
 }
 

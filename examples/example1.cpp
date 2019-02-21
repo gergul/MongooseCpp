@@ -10,6 +10,7 @@
 #include <sstream>
 #include "WebServer.h"
 #include "IWebController.h"
+#include "PageController.h"
 
 using namespace std;
 using namespace MongooseCpp;
@@ -29,6 +30,8 @@ class HelloController : public IWebController
             oss << "Hello, what's your name ?" << endl;
         oss << "</body></html>" << endl;
 
+		std::string s = request.GetParameter("name");
+		
         response.SetContent(oss.str());
         return true;
     };
@@ -38,8 +41,10 @@ int main()
 {
     WebServer myServer;
     HelloController myController;
+	PageController pageController;
 
     myServer.AddRoute("/hello", &myController);
+	myServer.AddRoute("/*", &pageController);
 
     if(!myServer.Start())
     {
